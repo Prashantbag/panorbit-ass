@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Login Page</title>
+</head>
+<style>
+	.label{
+	
+		font-size: 19px;
+		font-weight: 600px;
+		font-style: normal;
+		color:purple;
+		text-align: left !important;
+		
+	}
+	.container{
+		text-align: center;
+	}
+	.inputheight{
+		height: 24px !important;
+		border: 1px solid purple;
+		border-radius: 4px;
+	}
+	.table{
+		margin: 0px 470px;
+		border: 2px solid black;
+		padding: 16px;
+		border-radius: 8px;
+		width: 500px;
+		
+	}
+	.table .tr .labeltr{
+		width: 200px !important;
+	}
+	.btn{
+		border: 2px solid black;
+		border-radius: 6px;
+		color:white;
+		background-color:purple;
+		font-style:normal;
+		font-size: 22px;
+		font-weight: 700px;
+		font-family: monospace;
+		padding:9px;
+		cursor: pointer;
+	}
+
+</style>
+<body>
+<div class="container">
+		<h2> User Login </h2>
+					<table class="table">
+						<form method="POST" action="/user/verify" th:object="${emaildetail}" modelAttribute="emaildetail">
+							<tr class="tr">
+								<td class="labeltr">
+									<label name="recipient" class="label">Enter Email:</label>
+								</td>
+								<td>	
+									<input type="text" name="recipient" th:field="*{recipient}" class="inputheight" required="required"/>
+								</td>	
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="submit" value="Send OTP" class="btn">
+								</td>	
+							</tr>	
+						</form>
+					</table>	
+</div>		
+</body>
+</html>

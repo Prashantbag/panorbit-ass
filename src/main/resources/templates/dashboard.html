@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Login Page</title>
+
+</head>
+<style>
+.label {
+	font-size: 19px;
+	font-weight: 600px;
+	font-style: normal;
+	color: purple;
+	text-align: left !important;
+}
+
+.container {
+	text-align: center;
+}
+
+.inputheight {
+	height: 34px !important;
+	width: 100%; border : 1px solid purple;
+	border-radius: 4px;
+	border: 1px solid purple;
+}
+
+.table {
+	margin: 0px 470px;
+	border: 2px solid black;
+	padding: 16px;
+	border-radius: 8px;
+	width: 500px;
+}
+
+.table .tr .labeltr {
+	width: 200px !important;
+}
+
+.tr td {
+	border: none;
+}
+
+.btn {
+	border: 2px solid black;
+	border-radius: 6px;
+	color: white;
+	background-color: purple;
+	font-style: normal;
+	font-size: 22px;
+	font-weight: 700px;
+	font-family: monospace;
+	padding: 9px;
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript">
+
+async function search_city() {
+    let input = document.getElementById('searchbar').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('city');
+      
+    for (i = 0; i < x.length; i++) { 
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";                 
+        }
+    }
+    
+    
+    const res= await fetch("https://localhost:8081/search", {
+        method: "GET",
+        mode: "cors",
+            headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            
+            },       
+                }).then((response)=>{
+                    return response.json();
+                }).then((data)=>{
+                console.log(data);
+                }).catch((err)=>{
+                console.error(err);
+                });
+}
+
+
+
+</script>
+<body>
+	<div class="container">
+		<h2>User Dashboard</h2>
+		<table class="table">
+			<form>
+				<tr class="tr">
+
+					<td><input id="searchbar" onkeyup="search_city()"
+						type="text" name="search" class="inputheight form-control"
+						placeholder="Search..." required="required" >
+						
+				</tr>
+
+			<tr>
+				<td>
+					 <ol id='list' >
+			        <li class="city">Kabul</li>
+			        <li class="city">Qandahar</li>
+			        <li class="city">Herat</li>
+			        <li class="city">Mazar-e-Sharif</li>
+			        <li class="city">Amsterdam</li>
+			        <li class="city">Rotterdam</li>
+			        <li class="city">Haag</li>
+			        <li class="city">Utrecht</li>
+			        <li class="city">Eindhoven</li>
+			        <li class="city">Tilburg</li>
+			        <li class="city">Groningen</li>
+			    </ol>
+				</td>
+			</tr>
+				<tr>
+					<td><input type="submit" value="Search" class="btn"></td>
+				</tr>
+			</form>
+		</table>
+	</div>
+
+</body>
+</html>

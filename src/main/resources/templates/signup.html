@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Signup Page</title>
+
+</head>
+<style>
+	.label{
+	
+		font-size: 19px;
+		font-weight: 600px;
+		font-style: normal;
+		color:purple;
+		text-align: left !important;
+		
+	}
+	.container{
+		text-align: center;
+	}
+	.inputheight{
+		height: 24px !important;
+		border: 1px solid purple;
+		border-radius: 4px;
+	}
+	.table{
+		margin: 0px 470px;
+		border: 2px solid black;
+		padding: 16px;
+		border-radius: 8px;
+		width: 500px;
+		
+	}
+	.table .tr .labeltr{
+		width: 490px !important;
+	}
+	.btn{
+		border: 2px solid black;
+		border-radius: 6px;
+		color:white;
+		background-color:purple;
+		font-style:normal;
+		font-size: 22px;
+		font-weight: 700px;
+		font-family: monospace;
+		padding:9px;
+		cursor: pointer;
+	}
+
+</style>
+<body>
+<div class="container">
+	<h2> User Signup </h2>
+			<table class="table">
+			<form id="signupform" method="post"  action="/user/save-user" th:object="${userform}">
+				
+					<tr class="tr">
+						<td class="labeltr">
+							<label for="firstName" class="label">Enter First Name</label>
+						</td>
+						<td>	
+							<input name="firstName" th:field="*{firstName}" type="text" class="inputheight"/>
+						</td>	
+					</tr>
+					<br>
+					<tr class="tr">
+						<td class="labeltr">
+							<label for="lastName" class="label">Enter Last Name</label>
+						</td>
+						<td>	
+							<input name="lastName" th:field="*{lastName}" type="text" class="inputheight"/>
+						</td>	
+					</tr>
+					<br>
+					<tr class="tr">
+						<td class="labeltr">
+							<label for="email" class="label">Enter Email</label>
+						</td>
+						<td>	
+							<input type="email" th:field="*{email}" name="email" class="inputheight"/>
+						</td>
+					</tr>
+								
+					<br>
+					<tr class="tr">
+						<td class="labeltr">
+							<label for="gender" class="label">Enter the Gender</label>
+						</td>
+						<td>	
+							<select name="gender" th:field="*{gender}" class="inputheight">
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+							</select>
+						</td>	
+					</tr>	
+						
+					<br>
+					<br>
+					<tr class="tr">
+						<td class="labeltr">
+							<label for="phoneno" class="label">Enter the Contact Number</label>
+						</td>
+						<td>	
+							<input type="text" th:field="*{phoneno}" name="phoneno" class="inputheight"/>
+						</td>
+					</tr>		
+				
+					<tr>
+						<td>
+							<input type="submit" id="submitBtn" value="Signup" class="btn">
+						</td>	
+					</tr>	
+				
+			</form>
+	</table>
+</div>
+</body>
+</html>
